@@ -23,6 +23,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class GUIManager : MonoBehaviour {
 	public static GUIManager instance;
@@ -30,13 +31,57 @@ public class GUIManager : MonoBehaviour {
 	public GameObject gameOverPanel;
 	public Text yourScoreTxt;
 	public Text highScoreTxt;
-
+	public GameObject scoreCanvas;
 	public Text scoreTxt;
 	public Text moveCounterTxt;
 
 	private int score;
+	private int moveCounter;
+	public GameObject LosePanel;
 
-	void Awake() {
+	public TextMeshProUGUI levelTimer;
+	public float timer = 90.0f;
+
+	public int Score
+	{
+		get
+		{
+			return score;
+		}
+
+		set
+		{
+			score = value;
+			scoreTxt.text = score.ToString();
+		}
+	}
+
+	public int MoveCounter
+	{
+		get
+		{
+			return moveCounter;
+		}
+
+		set
+		{
+			moveCounter = value;
+			moveCounterTxt.text = moveCounter.ToString();
+			if (moveCounter <= 0)
+			{
+				moveCounter = 0;
+				StartCoroutine(WaitForShifting());
+			}
+
+		}
+	}
+
+	void Awake() 
+	{
+
+		moveCounter = 50;
+		moveCounterTxt.text = moveCounter.ToString();
+
 		instance = GetComponent<GUIManager>();
 	}
 
@@ -56,4 +101,34 @@ public class GUIManager : MonoBehaviour {
 		yourScoreTxt.text = score.ToString();
 	}
 
+	private IEnumerator WaitForShifting()
+	{
+		yield return new WaitUntil(() => !BoardManager.instance.IsShifting);
+		yield return new WaitForSeconds(0);
+		GameOver();
+		scoreCanvas.SetActive(false);
+	}
+
+	public void Timer()
+	{
+		if (moveCounter <= 0) return;
+
+		timer -= Time.deltaTime;
+
+		int approxTimer = (int)timer;
+
+		levelTimer.text = approxTimer.ToString();
+
+		if (approxTimer <= 0)
+		{
+		
+			LosePanel.SetActive(true);
+		}
+	}
+
+    void Update()
+    {
+		Timer();
+
+	}
 }

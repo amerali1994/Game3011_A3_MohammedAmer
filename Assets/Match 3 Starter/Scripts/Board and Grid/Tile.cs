@@ -136,7 +136,9 @@ public class Tile : MonoBehaviour {
 			matchFound = false;
 			StopCoroutine(BoardManager.instance.FindNullTiles());
 			StartCoroutine(BoardManager.instance.FindNullTiles());
-			SFXManager.instance.PlaySFX(Clip.Clear);
+			SFXManager.instance.PlaySFX(Clip.Swap);
+			GUIManager.instance.MoveCounter--;
+
 		}
 	}
 
