@@ -6,6 +6,8 @@ public class ToggleLevel : MonoBehaviour
 {
     public GameObject Easy;
     public GameObject Hard;
+    public GameObject EasyBoard;
+
     public void ToggleEasy()
     {
         Easy.SetActive(true);
@@ -16,5 +18,11 @@ public class ToggleLevel : MonoBehaviour
     {
         Hard.SetActive(true);
         Easy.SetActive(false);
+    }
+
+    public void ToggleEasyBoard()
+    {
+     
+        EasyBoard.SetActive(true);
     }
 }
