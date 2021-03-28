@@ -34,13 +34,13 @@ public class GUIManager : MonoBehaviour {
 	public GameObject scoreCanvas;
 	public Text scoreTxt;
 	public Text moveCounterTxt;
+	public float timer;
 
 	private int score;
 	private int moveCounter;
 	public GameObject LosePanel;
 
 	public TextMeshProUGUI levelTimer;
-	public float timer = 90.0f;
 
 	public int Score
 	{
@@ -130,5 +130,36 @@ public class GUIManager : MonoBehaviour {
     {
 		Timer();
 
+	}
+
+	public void ResetEasyTimer()
+    {
+		timer = 90;
+		if (moveCounter < 0 && Score < 0)
+		{
+			moveCounter = 50;
+			score = 0;
+		}
+	}
+
+	public void ResetMediumTimer()
+	{
+		timer = 70;
+		if (moveCounter < 0 && Score < 0)
+		{
+			moveCounter = 50;
+			score = 0;
+		}
+	}
+
+
+	public void ResetHardTimer()
+	{
+		timer = 50;
+		if (moveCounter < 0 && Score < 0)
+		{
+			moveCounter = 50;
+			score = 0;
+		}
 	}
 }

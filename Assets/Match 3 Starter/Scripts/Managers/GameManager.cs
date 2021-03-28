@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject faderObj;
 	public Image faderImg;
 	public bool gameOver = false;
-
+	public Component toggleScript;
 	public float fadeSpeed = .02f;
 
 	private Color fadeTransparency = new Color(0, 0, 0, .04f);
@@ -24,12 +24,19 @@ public class GameManager : MonoBehaviour {
 			DontDestroyOnLoad(gameObject);
 			instance = GetComponent<GameManager>();
 			SceneManager.sceneLoaded += OnLevelFinishedLoading;
-		} else {
+		} 
+		else 
+		{
 			Destroy(gameObject);
 		}
 	}
 
 	void Update() {
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			
+		}
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			ReturnToMenu();
 		}

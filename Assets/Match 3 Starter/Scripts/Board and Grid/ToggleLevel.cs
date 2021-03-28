@@ -10,6 +10,7 @@ public class ToggleLevel : MonoBehaviour
 
     public void ToggleEasy()
     {
+        Debug.Log("Easy Pressed");
         Easy.SetActive(true);
         //Hard.SetActive(false);
     }
