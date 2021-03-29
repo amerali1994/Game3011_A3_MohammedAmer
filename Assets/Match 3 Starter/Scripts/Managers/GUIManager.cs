@@ -134,7 +134,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void ResetEasyTimer()
     {
-		timer = 90;
+		timer = 91;
 		if (moveCounter < 0 && Score < 0)
 		{
 			moveCounter = 50;
@@ -144,7 +144,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void ResetMediumTimer()
 	{
-		timer = 70;
+		timer = 71;
 		if (moveCounter < 0 && Score < 0)
 		{
 			moveCounter = 50;
@@ -155,7 +155,7 @@ public class GUIManager : MonoBehaviour {
 
 	public void ResetHardTimer()
 	{
-		timer = 50;
+		timer = 51;
 		if (moveCounter < 0 && Score < 0)
 		{
 			moveCounter = 50;

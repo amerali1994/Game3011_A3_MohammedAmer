@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 	public GameObject faderObj;
 	public Image faderImg;
 	public bool gameOver = false;
-	public Component toggleScript;
 	public float fadeSpeed = .02f;
 
 	private Color fadeTransparency = new Color(0, 0, 0, .04f);
